@@ -1,0 +1,55 @@
+package application;
+
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.Scanner;
+
+import entities.Employee;
+
+public class Main {
+
+	public static void main(String[] args) throws ParseException {
+		
+		
+		Locale.setDefault(Locale.US);
+		//Locale localeBr = new Locale("pt", "BR");
+		// NumberFormat currency = NumberFormat.getCurrencyInstance(localeBr);
+		
+		Scanner sc = new Scanner(System.in);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		
+		List<Employee> list = new ArrayList<>(); 
+		
+		
+		list.add(new Employee("Maria", sdf.parse("18/10/2000"), 2009.44, "Operador"));
+		
+
+		
+		System.out.println();
+		
+		// Lista Funcionarios 
+		for(Employee emp : list) {
+			System.out.println(emp);
+		}
+		
+		// Os funcionários receberam 10% de aumento de salário
+		System.out.println();
+		for(Employee emp: list) {
+			emp.increaseSalary(10);
+		}
+		
+		for(Employee emp : list) {
+			System.out.println(emp);
+		}
+				
+		
+		sc.close();
+	}
+
+}

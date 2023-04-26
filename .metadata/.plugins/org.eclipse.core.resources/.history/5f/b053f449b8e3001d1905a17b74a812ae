@@ -1,0 +1,72 @@
+package application;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.Scanner;
+
+import entities.Employee;
+
+public class Main {
+
+	public static void main(String[] args) throws ParseException {
+		
+		
+		Locale.setDefault(Locale.US);
+		//Locale localeBr = new Locale("pt", "BR");
+		// NumberFormat currency = NumberFormat.getCurrencyInstance(localeBr);
+		
+		Scanner sc = new Scanner(System.in);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = new Date()
+		
+		List<Employee> list = new ArrayList<>(); 
+		
+		
+		list.add(new Employee("Maria", sdf.parse("18/10/2000"), 2009.44, "Operador"));
+		list.add(new Employee("João", sdf.parse("12/05/1990"), 2284.38, "Operador"));
+		list.add(new Employee("Caio", sdf.parse("02/05/1961"), 9836.14, "Coordenador"));
+		list.add(new Employee("Miguel", sdf.parse("14/10/1988"), 19116.88, "Diretor"));
+		list.add(new Employee("Alice", sdf.parse("05/01/1995"), 2234.68, "Recepcionista"));
+		list.add(new Employee("Heitor", sdf.parse("19/11/1999"), 1582.72, "Operador"));
+		list.add(new Employee("Arthur", sdf.parse("31/03/1993"), 4071.84, "Contador"));
+		list.add(new Employee("Laura", sdf.parse("08/07/1994"), 3017.45, "Gerente"));
+		list.add(new Employee("Heloísa", sdf.parse("24/05/2003"), 1606.85, "Eletrecista"));
+		list.add(new Employee("Helena", sdf.parse("02/09/1996"), 2799.93, "Gerente"));
+		
+
+		// Remover o funcionário “João” da lista
+		for(int i = 0; i < list.size(); i++) {
+			Employee emp = list.get(i);
+			if(emp.getName().equals("João")) {
+				list.remove(emp);
+			}
+		}
+
+		// Lista Funcionarios 
+		System.out.println("Lista de Funcionários");
+		for(Employee emp : list) {
+			System.out.println(emp);
+		}
+		
+		// Os funcionários receberam 10% de aumento de salário
+		System.out.println();
+		for(Employee emp: list) {
+			emp.increaseSalary(10);
+		}
+		
+		System.out.println("Lista de Funcionários após o aumento de 10%");
+		for(Employee emp : list) {
+			System.out.println(emp);
+		}
+		
+		// Imprimir os funcionários que fazem aniversário no mês 10 e 12.
+
+		sc.close();
+	}
+
+}
